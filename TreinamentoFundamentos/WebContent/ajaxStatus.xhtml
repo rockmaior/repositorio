@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Validador Entrada</title>
+</h:head>
+<h:body>
+	<p:ajaxStatus onstart="statusDialog.show();"
+		onsuccess="statusDialog.hide();" />
+
+	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+		draggable="false" closable="false">
+		<p:graphicImage value="/figuras/ajax-loader.gif" />
+	</p:dialog>
+	<h:form id="form">
+		<p:panel id="panel" header="Ajax Status">
+			<p:messages />
+			<h:panelGrid columns="3" cellpadding="5">
+				<h:outputLabel for="nome" value="Nome: *" />
+				<p:inputText id="nome" value="#{pessoa.nome}" required="true"
+					label="Nome">
+					<f:validateLength minimum="2" />
+				</p:inputText>
+				<p:message for="nome" display="icon" />
+
+				<h:outputLabel for="sobrenome" value="Sobrenome *" />
+				<p:inputText id="sobrenome" value="#{pessoa.sobrenome}"
+					required="true" label="Sobrenome">
+					<f:validateLength minimum="2" />
+					<p:ajax update="msgSobrenome" event="keyup" />
+				</p:inputText>
+				<p:message for="sobrenome" id="msgSobrenome" display="icon" />
+			</h:panelGrid>
+			<p:commandButton id="btn" value="Save" update="form:panel"
+				actionListener="#{pessoa.salvarPessoa}" />
+
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

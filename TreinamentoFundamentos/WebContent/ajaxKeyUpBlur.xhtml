@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Validador de Entrada</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h:panelGrid width="500">
+			<p:panel header="Ajax Key e Tab">
+				<h:panelGrid columns="3" cellpadding="5">
+					<h:outputText value="KeyUp: " />
+					<p:inputText id="nome" value="#{pessoa.nome}">
+						<p:ajax event="keyup" update="out1" immediate="true" />
+					</p:inputText>
+					<h:outputText id="out1" value="#{pessoa.nome}" />
+
+					<h:outputText value="Blur: " />
+					<p:inputText id="sobrenome" value="#{pessoa.sobrenome}">
+						<p:ajax event="blur" update="out2" immediate="true" />
+					</p:inputText>
+					<h:outputText id="out2" value="#{pessoa.sobrenome}" />
+				</h:panelGrid>
+			</p:panel>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
