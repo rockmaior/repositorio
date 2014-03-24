@@ -1,4 +1,4 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +6,6 @@
 <title>JSP Page</title>
 </head>
 <body>
-	<jsp:forward page="/ajaxStatus.jsf" />
+	<jsp:forward page="/ajaxKeyUpBlur.jsf" />
 </body>
 </html>
